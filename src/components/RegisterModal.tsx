@@ -17,6 +17,8 @@ const RegisterModal: React.FC<RegisterModalProps> = ({
     email: '',
     phone: '',
     age: 18,
+    countryOfResidence: '',
+    cityTownName: '',
     password: '',
     confirmPassword: ''
   });
@@ -78,7 +80,9 @@ const RegisterModal: React.FC<RegisterModalProps> = ({
           username: formData.username,
           fullName: formData.fullName,
           phone: formData.phone,
-          age: formData.age
+          age: formData.age,
+          countryOfResidence: formData.countryOfResidence,
+          cityTownName: formData.cityTownName
         });
         onClose();
         alert('Account created successfully! You are now logged in.');
