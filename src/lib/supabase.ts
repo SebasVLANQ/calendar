@@ -35,6 +35,8 @@ export const signUp = async (email: string, password: string, userData: {
         email: email,
         phone: userData.phone,
         age: userData.age,
+        country_of_residence: userData.countryOfResidence,
+        city_town_name: userData.cityTownName,
         is_admin: false
       });
 
