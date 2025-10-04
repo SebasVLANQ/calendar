@@ -59,6 +59,8 @@ export const updateUserProfile = async (userId: string, profileData: {
   full_name?: string;
   phone?: string;
   age?: number;
+  country_of_residence?: string;
+  city_town_name?: string;
 }) => {
   const { data, error } = await supabase
     .from('user_profiles')

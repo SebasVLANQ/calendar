@@ -53,6 +53,8 @@ export interface Database {
           email: string;
           phone: string;
           age: number;
+          country_of_residence: string;
+          city_town_name: string;
           is_admin: boolean;
           created_at: string;
           updated_at: string;
@@ -64,6 +66,8 @@ export interface Database {
           email: string;
           phone: string;
           age: number;
+          country_of_residence: string;
+          city_town_name: string;
           is_admin?: boolean;
           created_at?: string;
           updated_at?: string;
@@ -75,6 +79,8 @@ export interface Database {
           email?: string;
           phone?: string;
           age?: number;
+          country_of_residence?: string;
+          city_town_name?: string;
           is_admin?: boolean;
           created_at?: string;
           updated_at?: string;

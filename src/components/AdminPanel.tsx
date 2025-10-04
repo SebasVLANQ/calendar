@@ -425,6 +425,7 @@ const AdminPanel: React.FC<AdminPanelProps> = ({
                               <p className="font-medium">{user.full_name}</p>
                               <p className="text-sm text-gray-600">@{user.username}</p>
                               <p className="text-xs text-gray-500">Age: {user.age}</p>
+                              <p className="text-xs text-gray-500">{user.city_town_name}, {user.country_of_residence}</p>
                             </div>
                           </td>
                           <td className="border border-gray-300 px-4 py-2">

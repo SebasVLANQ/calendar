@@ -306,6 +306,48 @@ const UserProfileModal: React.FC<UserProfileModalProps> = ({
                 )}
               </div>
 
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Country of Residence *
+                  </label>
+                  <input
+                    type="text"
+                    value={profileData.country_of_residence}
+                    onChange={(e) => handleProfileChange('country_of_residence', e.target.value)}
+                    className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 ${
+                      profileErrors.country_of_residence 
+                        ? 'border-red-500 focus:ring-red-500' 
+                        : 'border-gray-300 focus:ring-purple-500'
+                    }`}
+                    placeholder="Enter your country"
+                  />
+                  {profileErrors.country_of_residence && (
+                    <p className="text-red-500 text-xs mt-1">{profileErrors.country_of_residence}</p>
+                  )}
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    City or Town Name *
+                  </label>
+                  <input
+                    type="text"
+                    value={profileData.city_town_name}
+                    onChange={(e) => handleProfileChange('city_town_name', e.target.value)}
+                    className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 ${
+                      profileErrors.city_town_name 
+                        ? 'border-red-500 focus:ring-red-500' 
+                        : 'border-gray-300 focus:ring-purple-500'
+                    }`}
+                    placeholder="Enter your city or town"
+                  />
+                  {profileErrors.city_town_name && (
+                    <p className="text-red-500 text-xs mt-1">{profileErrors.city_town_name}</p>
+                  )}
+                </div>
+              </div>
+
               {profileErrors.general && (
                 <div className="bg-red-50 p-3 rounded-lg">
                   <p className="text-sm text-red-800">{profileErrors.general}</p>

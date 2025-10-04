@@ -216,6 +216,44 @@ const RegisterModal: React.FC<RegisterModalProps> = ({
             <div className="grid grid-cols-2 gap-4">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Country of Residence *
+                </label>
+                <input
+                  type="text"
+                  value={formData.countryOfResidence}
+                  onChange={(e) => handleChange('countryOfResidence', e.target.value)}
+                  className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 ${
+                    errors.countryOfResidence 
+                      ? 'border-red-500 focus:ring-red-500' 
+                      : 'border-gray-300 focus:ring-blue-500'
+                  }`}
+                  placeholder="Enter your country"
+                />
+                {errors.countryOfResidence && <p className="text-red-500 text-xs mt-1">{errors.countryOfResidence}</p>}
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  City or Town Name *
+                </label>
+                <input
+                  type="text"
+                  value={formData.cityTownName}
+                  onChange={(e) => handleChange('cityTownName', e.target.value)}
+                  className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 ${
+                    errors.cityTownName 
+                      ? 'border-red-500 focus:ring-red-500' 
+                      : 'border-gray-300 focus:ring-blue-500'
+                  }`}
+                  placeholder="Enter your city or town"
+                />
+                {errors.cityTownName && <p className="text-red-500 text-xs mt-1">{errors.cityTownName}</p>}
+              </div>
+            </div>
+
+            <div className="grid grid-cols-2 gap-4">
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
                   Password *
                 </label>
                 <input
