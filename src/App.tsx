@@ -195,8 +195,9 @@ function App() {
       {/* Header */}
       <header className="bg-white shadow-sm border-b">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <div className="flex items-center space-x-4">
+          <div className="grid grid-cols-[auto_1fr] gap-x-4 py-2 lg:flex lg:justify-between lg:items-center lg:h-16 lg:py-0">
+            {/* Brand Icon - spans both rows on small screens */}
+            <div className="row-span-2 flex items-center lg:row-span-1">
               <a 
                 href="https://expedicionesangostura.github.io/EA.home/" 
                 target="_blank" 
@@ -209,13 +210,18 @@ function App() {
                   className="h-11 w-11 object-contain"
                 />
               </a>
+            </div>
+            
+            {/* Top row content - Title and subtitle */}
+            <div className="flex items-center lg:space-x-4">
               <div>
                 <h1 className="text-3xl font-caveat font-semibold text-gray-900">{t('header.title')}</h1>
                 <p className="text-sm text-gray-500 hidden sm:block">{t('header.subtitle')}</p>
               </div>
             </div>
             
-            <div className="flex items-center space-x-4">
+            {/* Bottom row content - Language switcher and auth */}
+            <div className="flex items-center justify-end space-x-4 mt-2 lg:mt-0">
               {/* Language Switcher */}
               <div className="flex items-center space-x-2 border-r border-gray-300 pr-4">
                 <Globe className="h-4 w-4 text-gray-600" />
