@@ -263,7 +263,7 @@ const UserProfileModal: React.FC<UserProfileModalProps> = ({
                       ? 'border-red-500 focus:ring-red-500' 
                       : 'border-gray-300 focus:ring-purple-500'
                   }`}
-                  placeholder={t('auth.fullName')}
+                  placeholder="Enter full name"
                 />
                 {profileErrors.full_name && (
                   <p className="text-red-500 text-xs mt-1">{profileErrors.full_name}</p>
@@ -272,7 +272,7 @@ const UserProfileModal: React.FC<UserProfileModalProps> = ({
 
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
-                  {t('auth.email')}
+                  Email Address
                 </label>
                 <input
                   type="email"
@@ -398,7 +398,7 @@ const UserProfileModal: React.FC<UserProfileModalProps> = ({
                         ? 'border-red-500 focus:ring-red-500' 
                         : 'border-gray-300 focus:ring-purple-500'
                     }`}
-                    placeholder="Enter new password"
+                    placeholder={t('profile.newPassword')}
                   />
                   <button
                     type="button"
@@ -415,7 +415,7 @@ const UserProfileModal: React.FC<UserProfileModalProps> = ({
 
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Confirm New Password *
+                  {t('profile.confirmNewPassword')} *
                 </label>
                 <div className="relative">
                   <input
