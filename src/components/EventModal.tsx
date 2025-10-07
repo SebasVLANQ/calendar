@@ -23,6 +23,7 @@ const EventModal: React.FC<EventModalProps> = ({
   const [seatsRequested, setSeatsRequested] = useState(1);
   const [isEditing, setIsEditing] = useState(false);
   const [editedEvent, setEditedEvent] = useState(event);
+  const { t } = useTranslation();
 
   const isUserRegistered = userRegistrations.some(reg => reg.event_id === event.id);
 
