@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { X, Plus, Calendar, Clock, Users, Award } from 'lucide-react';
 import { supabase } from '../lib/supabase';
-import { useTranslation } from '../i18n/i18n';
 
 interface AddEventModalProps {
   onClose: () => void;
@@ -9,7 +8,6 @@ interface AddEventModalProps {
 }
 
 const AddEventModal: React.FC<AddEventModalProps> = ({ onClose, onEventAdded }) => {
-  const { t } = useTranslation();
   const [formData, setFormData] = useState({
     title: '',
     description: '',
@@ -33,19 +31,19 @@ const AddEventModal: React.FC<AddEventModalProps> = ({ onClose, onEventAdded }) 
     const newErrors: Record<string, string> = {};
 
     if (!formData.title.trim()) {
-      newErrors.title = t('addEvent.eventTitleRequired');
+      newErrors.title = 'Event title is required';
     }
 
     if (!formData.description.trim()) {
-      newErrors.description = t('addEvent.eventDescriptionRequired');
+      newErrors.description = 'Event description is required';
     }
 
     if (!formData.start_time) {
-      newErrors.start_time = t('addEvent.startTimeRequired');
+      newErrors.start_time = 'Start time is required';
     }
 
     if (!formData.end_time) {
-      newErrors.end_time = t('addEvent.endTimeRequired');
+      newErrors.end_time = 'End time is required';
     }
 
     if (formData.start_time && formData.end_time) {
@@ -54,21 +52,21 @@ const AddEventModal: React.FC<AddEventModalProps> = ({ onClose, onEventAdded }) 
       const now = new Date();
 
       if (startDate <= now) {
-        newErrors.start_time = t('addEvent.startTimeFuture');
+        newErrors.start_time = 'Start time must be in the future';
       }
 
       if (endDate <= startDate) {
-        newErrors.end_time = t('addEvent.endTimeAfterStart');
+        newErrors.end_time = 'End time must be after start time';
       }
 
       const duration = calculateDuration(formData.start_time, formData.end_time);
       if (duration < 15) {
-        newErrors.end_time = t('addEvent.minimumDuration');
+        newErrors.end_time = 'Event must be at least 15 minutes long';
       }
     }
 
     if (formData.total_seats < 1 || formData.total_seats > 1000) {
-      newErrors.total_seats = t('addEvent.totalSeatsRequired');
+      newErrors.total_seats = 'Total seats must be between 1 and 1000';
     }
 
     setErrors(newErrors);
@@ -105,10 +103,10 @@ const AddEventModal: React.FC<AddEventModalProps> = ({ onClose, onEventAdded }) 
 
       onEventAdded();
       onClose();
-      alert(t('common.save') + ' ' + t('addEvent.title') + '!');
+      alert('Event created successfully!');
     } catch (error: any) {
       console.error('Error creating event:', error);
-      setErrors({ general: error.message || t('addEvent.eventTitleRequired') });
+      setErrors({ general: error.message || 'Failed to create event' });
     } finally {
       setLoading(false);
     }
@@ -130,7 +128,7 @@ const AddEventModal: React.FC<AddEventModalProps> = ({ onClose, onEventAdded }) 
         <div className="flex items-center justify-between p-6 border-b bg-gradient-to-r from-green-600 to-emerald-600 text-white rounded-t-xl">
           <div className="flex items-center space-x-2">
             <Plus className="h-5 w-5" />
-            <h2 className="text-xl font-semibold">{t('addEvent.title')}</h2>
+            <h2 className="text-xl font-semibold">Add New Event</h2>
           </div>
           <button
             onClick={onClose}
@@ -146,12 +144,12 @@ const AddEventModal: React.FC<AddEventModalProps> = ({ onClose, onEventAdded }) 
             <div className="space-y-4">
               <h3 className="text-lg font-medium text-gray-900 flex items-center space-x-2">
                 <Calendar className="h-5 w-5 text-blue-600" />
-                <span>{t('addEvent.eventInformation')}</span>
+                <span>Event Information</span>
               </h3>
 
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
-                  {t('addEvent.eventTitle')} *
+                  Event Title *
                 </label>
                 <input
                   type="text"
@@ -162,14 +160,14 @@ const AddEventModal: React.FC<AddEventModalProps> = ({ onClose, onEventAdded }) 
                       ? 'border-red-500 focus:ring-red-500' 
                       : 'border-gray-300 focus:ring-blue-500'
                   }`}
-                  placeholder={t('addEvent.eventTitle')}
+                  placeholder="Enter event title"
                 />
                 {errors.title && <p className="text-red-500 text-xs mt-1">{errors.title}</p>}
               </div>
 
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
-                  {t('addEvent.eventDescription')} *
+                  Event Description *
                 </label>
                 <textarea
                   value={formData.description}
@@ -180,7 +178,7 @@ const AddEventModal: React.FC<AddEventModalProps> = ({ onClose, onEventAdded }) 
                       ? 'border-red-500 focus:ring-red-500' 
                       : 'border-gray-300 focus:ring-blue-500'
                   }`}
-                  placeholder={t('addEvent.eventDescriptionPlaceholder')}
+                  placeholder="Describe the event, what participants can expect, requirements, etc."
                 />
                 {errors.description && <p className="text-red-500 text-xs mt-1">{errors.description}</p>}
               </div>
@@ -190,13 +188,13 @@ const AddEventModal: React.FC<AddEventModalProps> = ({ onClose, onEventAdded }) 
             <div className="space-y-4">
               <h3 className="text-lg font-medium text-gray-900 flex items-center space-x-2">
                 <Clock className="h-5 w-5 text-blue-600" />
-                <span>{t('addEvent.schedule')}</span>
+                <span>Schedule</span>
               </h3>
 
               <div className="grid grid-cols-2 gap-4">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
-                    {t('addEvent.startDateTime')} *
+                    Start Date & Time *
                   </label>
                   <input
                     type="datetime-local"
@@ -213,7 +211,7 @@ const AddEventModal: React.FC<AddEventModalProps> = ({ onClose, onEventAdded }) 
 
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
-                    {t('addEvent.endDateTime')} *
+                    End Date & Time *
                   </label>
                   <input
                     type="datetime-local"
@@ -233,7 +231,7 @@ const AddEventModal: React.FC<AddEventModalProps> = ({ onClose, onEventAdded }) 
                 <div className="bg-blue-50 p-3 rounded-lg">
                   <p className="text-sm text-blue-800">
                     <Clock className="h-4 w-4 inline mr-1" />
-                    {t('addEvent.duration')}: {Math.floor(duration / 60)}h {duration % 60}m ({duration} {t('events.minutes')})
+                    Duration: {Math.floor(duration / 60)}h {duration % 60}m ({duration} minutes)
                   </p>
                 </div>
               )}
@@ -243,28 +241,28 @@ const AddEventModal: React.FC<AddEventModalProps> = ({ onClose, onEventAdded }) 
             <div className="space-y-4">
               <h3 className="text-lg font-medium text-gray-900 flex items-center space-x-2">
                 <Award className="h-5 w-5 text-blue-600" />
-                <span>{t('addEvent.eventDetails')}</span>
+                <span>Event Details</span>
               </h3>
 
               <div className="grid grid-cols-2 gap-4">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
-                    {t('addEvent.difficultyLevel')} *
+                    Difficulty Level *
                   </label>
                   <select
                     value={formData.difficulty}
                     onChange={(e) => handleChange('difficulty', e.target.value)}
                     className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                   >
-                    <option value="Beginner">{t('events.difficulties.beginner')}</option>
-                    <option value="Intermediate">{t('events.difficulties.intermediate')}</option>
-                    <option value="Advanced">{t('events.difficulties.advanced')}</option>
+                    <option value="Beginner">Beginner</option>
+                    <option value="Intermediate">Intermediate</option>
+                    <option value="Advanced">Advanced</option>
                   </select>
                 </div>
 
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
-                    {t('eventModal.totalSeats')} *
+                    Total Seats *
                   </label>
                   <input
                     type="number"
@@ -324,7 +322,7 @@ const AddEventModal: React.FC<AddEventModalProps> = ({ onClose, onEventAdded }) 
                 onClick={onClose}
                 className="px-6 py-2 text-gray-600 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"
               >
-                {t('common.cancel')}
+                Cancel
               </button>
               <button
                 type="submit"
@@ -332,7 +330,7 @@ const AddEventModal: React.FC<AddEventModalProps> = ({ onClose, onEventAdded }) 
                 className="flex items-center space-x-2 px-6 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors font-medium disabled:opacity-50"
               >
                 <Plus className="h-4 w-4" />
-                <span>{loading ? t('addEvent.creatingEvent') : t('addEvent.addEvent')}</span>
+                <span>{loading ? 'Creating Event...' : 'Add Event'}</span>
               </button>
             </div>
           </form>

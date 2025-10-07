@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { X, Clock, Users, Award, Calendar, CreditCard as Edit3 } from 'lucide-react';
 import { Event, UserProfile, EventRegistration } from '../types';
 import { useTranslation } from '../i18n/i18n';
-import { useTranslation } from '../i18n/i18n';
 
 interface EventModalProps {
   event: Event;
@@ -21,10 +20,10 @@ const EventModal: React.FC<EventModalProps> = ({
   onBook, 
   onUpdate 
 }) => {
-  const { t } = useTranslation();
   const [seatsRequested, setSeatsRequested] = useState(1);
   const [isEditing, setIsEditing] = useState(false);
   const [editedEvent, setEditedEvent] = useState(event);
+  const { t } = useTranslation();
 
   const isUserRegistered = userRegistrations.some(reg => reg.event_id === event.id);
 
