@@ -78,7 +78,9 @@
     "dontHaveAccount": "Don't have an account?",
     "alreadyHaveAccount": "Already have an account?",
     "registerHere": "Register here",
-    "signInHere": "Sign in here"
+    "signInHere": "Sign in here",
+    "countryOfResidence": "Country of Residence",
+    "cityTownName": "City or Town Name"
   },
   "admin": {
     "adminPanel": "Admin Panel",
@@ -102,6 +104,19 @@
     "events": "events",
     "noEvents": "No events found",
     "noEventsFilter": "No events match the selected filter criteria"
+  },
+  "eventModal": {
+    "title": "Title",
+    "startTime": "Start Time",
+    "endTime": "End Time",
+    "totalSeats": "Total Seats",
+    "availableSeats": "Available Seats",
+    "adminControls": "Admin Controls",
+    "editEvent": "Edit Event",
+    "markAvailable": "Mark Available",
+    "markFull": "Mark Full",
+    "cancelEvent": "Cancel Event",
+    "saveChanges": "Save Changes"
   },
   "common": {
     "loading": "Loading...",

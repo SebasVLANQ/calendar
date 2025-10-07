@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { X, UserPlus } from 'lucide-react';
 import { signUp } from '../lib/supabase';
+import { useTranslation } from '../i18n/i18n';
 
 interface RegisterModalProps {
   onClose: () => void;
@@ -11,6 +12,7 @@ const RegisterModal: React.FC<RegisterModalProps> = ({
   onClose, 
   onSwitchToLogin 
 }) => {
+  const { t } = useTranslation();
   const [formData, setFormData] = useState({
     username: '',
     fullName: '',
@@ -112,7 +114,7 @@ const RegisterModal: React.FC<RegisterModalProps> = ({
         <div className="flex items-center justify-between p-6 border-b bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-t-xl">
           <div className="flex items-center space-x-2">
             <UserPlus className="h-5 w-5" />
-            <h2 className="text-xl font-semibold">Create Account</h2>
+            <h2 className="text-xl font-semibold">{t('auth.signUp')}</h2>
           </div>
           <button
             onClick={onClose}
@@ -127,7 +129,7 @@ const RegisterModal: React.FC<RegisterModalProps> = ({
             <div className="grid grid-cols-2 gap-4">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Username *
+                  {t('auth.username')} *
                 </label>
                 <input
                   type="text"
@@ -138,14 +140,14 @@ const RegisterModal: React.FC<RegisterModalProps> = ({
                       ? 'border-red-500 focus:ring-red-500' 
                       : 'border-gray-300 focus:ring-blue-500'
                   }`}
-                  placeholder="Choose a username"
+                  placeholder={t('auth.username')}
                 />
                 {errors.username && <p className="text-red-500 text-xs mt-1">{errors.username}</p>}
               </div>
 
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Age *
+                  {t('auth.age')} *
                 </label>
                 <input
                   type="number"
@@ -165,7 +167,7 @@ const RegisterModal: React.FC<RegisterModalProps> = ({
 
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
-                Full Name *
+                {t('auth.fullName')} *
               </label>
               <input
                 type="text"
@@ -176,14 +178,14 @@ const RegisterModal: React.FC<RegisterModalProps> = ({
                     ? 'border-red-500 focus:ring-red-500' 
                     : 'border-gray-300 focus:ring-blue-500'
                 }`}
-                placeholder="Enter your full name"
+                placeholder={t('auth.fullName')}
               />
               {errors.fullName && <p className="text-red-500 text-xs mt-1">{errors.fullName}</p>}
             </div>
 
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
-                Email Address *
+                {t('auth.email')} *
               </label>
               <input
                 type="email"
@@ -212,7 +214,7 @@ const RegisterModal: React.FC<RegisterModalProps> = ({
                     ? 'border-red-500 focus:ring-red-500' 
                     : 'border-gray-300 focus:ring-blue-500'
                 }`}
-                placeholder="Enter your phone number"
+                placeholder={t('auth.phone')}
               />
               {errors.phone && <p className="text-red-500 text-xs mt-1">{errors.phone}</p>}
             </div>
@@ -220,7 +222,7 @@ const RegisterModal: React.FC<RegisterModalProps> = ({
             <div className="grid grid-cols-2 gap-4">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Country of Residence *
+                  {t('auth.countryOfResidence')} *
                 </label>
                 <input
                   type="text"
@@ -231,14 +233,14 @@ const RegisterModal: React.FC<RegisterModalProps> = ({
                       ? 'border-red-500 focus:ring-red-500' 
                       : 'border-gray-300 focus:ring-blue-500'
                   }`}
-                  placeholder="Enter your country"
+                  placeholder={t('auth.countryOfResidence')}
                 />
                 {errors.countryOfResidence && <p className="text-red-500 text-xs mt-1">{errors.countryOfResidence}</p>}
               </div>
 
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
-                  City or Town Name *
+                  {t('auth.cityTownName')} *
                 </label>
                 <input
                   type="text"
@@ -249,7 +251,7 @@ const RegisterModal: React.FC<RegisterModalProps> = ({
                       ? 'border-red-500 focus:ring-red-500' 
                       : 'border-gray-300 focus:ring-blue-500'
                   }`}
-                  placeholder="Enter your city or town"
+                  placeholder={t('auth.cityTownName')}
                 />
                 {errors.cityTownName && <p className="text-red-500 text-xs mt-1">{errors.cityTownName}</p>}
               </div>
@@ -258,7 +260,7 @@ const RegisterModal: React.FC<RegisterModalProps> = ({
             <div className="grid grid-cols-2 gap-4">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Password *
+                  {t('auth.password')} *
                 </label>
                 <input
                   type="password"
@@ -269,14 +271,14 @@ const RegisterModal: React.FC<RegisterModalProps> = ({
                       ? 'border-red-500 focus:ring-red-500' 
                       : 'border-gray-300 focus:ring-blue-500'
                   }`}
-                  placeholder="Choose a password"
+                  placeholder={t('auth.password')}
                 />
                 {errors.password && <p className="text-red-500 text-xs mt-1">{errors.password}</p>}
               </div>
 
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Confirm Password *
+                  {t('auth.confirmPassword')} *
                 </label>
                 <input
                   type="password"
@@ -287,7 +289,7 @@ const RegisterModal: React.FC<RegisterModalProps> = ({
                       ? 'border-red-500 focus:ring-red-500' 
                       : 'border-gray-300 focus:ring-blue-500'
                   }`}
-                  placeholder="Confirm your password"
+                  placeholder={t('auth.confirmPassword')}
                 />
                 {errors.confirmPassword && <p className="text-red-500 text-xs mt-1">{errors.confirmPassword}</p>}
               </div>
@@ -304,18 +306,18 @@ const RegisterModal: React.FC<RegisterModalProps> = ({
               disabled={loading}
               className="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition-colors font-medium disabled:opacity-50"
             >
-              {loading ? 'Creating Account...' : 'Create Account'}
+              {loading ? t('auth.creatingAccount') : t('auth.signUp')}
             </button>
           </form>
 
           <div className="mt-6 pt-6 border-t text-center">
             <p className="text-gray-600">
-              Already have an account?{' '}
+              {t('auth.alreadyHaveAccount')}{' '}
               <button
                 onClick={onSwitchToLogin}
                 className="text-blue-600 hover:text-blue-700 font-medium"
               >
-                Sign in here
+                {t('auth.signInHere')}
               </button>
             </p>
           </div>

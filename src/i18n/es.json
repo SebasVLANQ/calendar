@@ -78,7 +78,9 @@
     "dontHaveAccount": "¿No tienes una cuenta?",
     "alreadyHaveAccount": "¿Ya tienes una cuenta?",
     "registerHere": "Regístrate aquí",
-    "signInHere": "Inicia sesión aquí"
+    "signInHere": "Inicia sesión aquí",
+    "countryOfResidence": "País de Residencia",
+    "cityTownName": "Ciudad o Pueblo"
   },
   "admin": {
     "adminPanel": "Panel de Administración",
@@ -102,6 +104,19 @@
     "events": "eventos",
     "noEvents": "No se encontraron eventos",
     "noEventsFilter": "Ningún evento coincide con los criterios de filtro seleccionados"
+  },
+  "eventModal": {
+    "title": "Título",
+    "startTime": "Hora de Inicio",
+    "endTime": "Hora de Finalización",
+    "totalSeats": "Total de Asientos",
+    "availableSeats": "Asientos Disponibles",
+    "adminControls": "Controles de Administrador",
+    "editEvent": "Editar Evento",
+    "markAvailable": "Marcar Disponible",
+    "markFull": "Marcar Completo",
+    "cancelEvent": "Cancelar Evento",
+    "saveChanges": "Guardar Cambios"
   },
   "common": {
     "loading": "Cargando...",
