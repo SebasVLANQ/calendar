@@ -188,7 +188,7 @@ const UserProfileModal: React.FC<UserProfileModalProps> = ({
             }`}
           >
             <User className="h-4 w-4 inline mr-2" />
-            Profile Information
+            {t('profile.profileInformation')}
           </button>
           <button
             onClick={() => setActiveTab('password')}
@@ -199,7 +199,7 @@ const UserProfileModal: React.FC<UserProfileModalProps> = ({
             }`}
           >
             <Lock className="h-4 w-4 inline mr-2" />
-            Change Password
+            {t('profile.changePassword')}
           </button>
         </div>
 
