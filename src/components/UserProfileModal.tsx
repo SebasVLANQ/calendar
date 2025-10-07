@@ -398,7 +398,7 @@ const UserProfileModal: React.FC<UserProfileModalProps> = ({
                         ? 'border-red-500 focus:ring-red-500' 
                         : 'border-gray-300 focus:ring-purple-500'
                     }`}
-                    placeholder={t('profile.newPassword')}
+                    placeholder="Enter new password"
                   />
                   <button
                     type="button"
@@ -415,7 +415,7 @@ const UserProfileModal: React.FC<UserProfileModalProps> = ({
 
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
-                  {t('profile.confirmNewPassword')} *
+                  Confirm New Password *
                 </label>
                 <div className="relative">
                   <input
@@ -427,7 +427,7 @@ const UserProfileModal: React.FC<UserProfileModalProps> = ({
                         ? 'border-red-500 focus:ring-red-500' 
                         : 'border-gray-300 focus:ring-purple-500'
                     }`}
-                    placeholder="Confirm new password"
+                    placeholder={t('profile.confirmNewPassword')}
                   />
                   <button
                     type="button"
@@ -454,7 +454,7 @@ const UserProfileModal: React.FC<UserProfileModalProps> = ({
                   onClick={onClose}
                   className="px-6 py-2 text-gray-600 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"
                 >
-                  Cancel
+                  {t('common.cancel')}
                 </button>
                 <button
                   type="submit"
@@ -462,7 +462,7 @@ const UserProfileModal: React.FC<UserProfileModalProps> = ({
                   className="flex items-center space-x-2 px-6 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors font-medium disabled:opacity-50"
                 >
                   <Lock className="h-4 w-4" />
-                  <span>{passwordLoading ? 'Updating...' : 'Change Password'}</span>
+                  <span>{passwordLoading ? t('profile.updating') : t('profile.changePassword')}</span>
                 </button>
               </div>
             </form>
