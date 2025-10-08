@@ -207,7 +207,7 @@ function App() {
                 <img 
                   src="/1logo-ea-bolt.png" 
                   alt="Expediciones Angostura Logo" 
-                  className="h-11 w-11 object-contain"
+                  className="h-16 w-16 object-contain"
                 />
               </a>
             </div>
