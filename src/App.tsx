@@ -5,6 +5,7 @@ import EventModal from './components/EventModal';
 import LoginModal from './components/LoginModal';
 import RegisterModal from './components/RegisterModal';
 import AdminPanel from './components/AdminPanel';
+import ProviderPanel from './components/ProviderPanel';
 import UserProfileModal from './components/UserProfileModal';
 import { Event, UserProfile, EventRegistration } from './types';
 import { supabase, signOut, getCurrentUser, getUserProfile } from './lib/supabase';
@@ -18,6 +19,7 @@ function App() {
   const [showLoginModal, setShowLoginModal] = useState(false);
   const [showRegisterModal, setShowRegisterModal] = useState(false);
   const [showAdminPanel, setShowAdminPanel] = useState(false);
+  const [showProviderPanel, setShowProviderPanel] = useState(false);
   const [showProfileModal, setShowProfileModal] = useState(false);
   const [currentUser, setCurrentUser] = useState<UserProfile | null>(null);
   const [userRegistrations, setUserRegistrations] = useState<EventRegistration[]>([]);
@@ -268,6 +270,15 @@ function App() {
                       <span>{t('header.adminPanel')}</span>
                     </button>
                   )}
+                  {currentUser.is_provider && (
+                    <button
+                      onClick={() => setShowProviderPanel(true)}
+                      className="flex items-center space-x-1 bg-green-600 text-white px-3 py-2 rounded-lg hover:bg-green-700 transition-colors"
+                    >
+                      <Settings className="h-4 w-4" />
+                      <span>{t('header.providerPanel')}</span>
+                    </button>
+                  )}
                   <button
                     onClick={handleLogout}
                     className="flex items-center space-x-1 text-gray-600 hover:text-gray-800 transition-colors"
@@ -340,6 +351,15 @@ function App() {
         <AdminPanel
           events={events}
           onClose={() => setShowAdminPanel(false)}
+          onEventsUpdate={loadEvents}
+        />
+      )}
+
+      {showProviderPanel && currentUser?.is_provider && (
+        <ProviderPanel
+          events={events}
+          currentUser={currentUser}
+          onClose={() => setShowProviderPanel(false)}
           onEventsUpdate={loadEvents}
         />
       )}

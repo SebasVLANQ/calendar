@@ -37,7 +37,8 @@ export const signUp = async (email: string, password: string, userData: {
         age: userData.age,
         country_of_residence: userData.countryOfResidence,
         city_town_name: userData.cityTownName,
-        is_admin: false
+        is_admin: false,
+        is_provider: false
       });
 
     if (profileError) throw profileError;
@@ -64,9 +65,12 @@ export const updateUserProfile = async (userId: string, profileData: {
   country_of_residence?: string;
   city_town_name?: string;
 }) => {
+  // Explicitly exclude is_admin and is_provider from user updates
+  const { is_admin, is_provider, ...allowedData } = profileData as any;
+  
   const { data, error } = await supabase
     .from('user_profiles')
-    .update(profileData)
+    .update(allowedData)
     .eq('id', userId)
     .select()
     .single();

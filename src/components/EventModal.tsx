@@ -292,7 +292,7 @@ const EventModal: React.FC<EventModalProps> = ({
               )}
 
               {/* Admin Controls */}
-              {currentUser?.is_admin && (
+              {(currentUser?.is_admin || (currentUser?.is_provider && currentUser.id === event.event_owner_id)) && (
                 <div className="bg-gray-50 p-4 rounded-lg">
                   <h3 className="font-medium text-gray-900 mb-3">{t('eventModal.adminControls')}</h3>
                   <div className="flex flex-wrap gap-2">

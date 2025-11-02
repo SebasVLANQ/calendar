@@ -3,6 +3,7 @@
     "title": "Expediciones Angostura",
     "subtitle": "Scheduled Events",
     "adminPanel": "Admin Panel",
+    "providerPanel": "Provider Panel",
     "login": "Login",
     "register": "Register",
     "logout": "Logout",
@@ -104,6 +105,17 @@
     "events": "events",
     "noEvents": "No events found",
     "noEventsFilter": "No events match the selected filter criteria"
+  },
+  "provider": {
+    "providerPanel": "Provider Panel",
+    "eventManagement": "My Events Management",
+    "myEvents": "My Events",
+    "availableEvents": "Available Events",
+    "totalBookings": "Total Bookings",
+    "addEvent": "Add Event",
+    "noEvents": "No Events Created",
+    "noEventsDescription": "You haven't created any events yet. Start by creating your first event.",
+    "createFirstEvent": "Create Your First Event"
   },
   "eventModal": {
     "title": "Title",

@@ -13,6 +13,7 @@ export interface Database {
           seats_available: number;
           total_seats: number;
           status: 'available' | 'fully-booked' | 'cancelled';
+          event_owner_id: string | null;
           created_at: string;
           updated_at: string;
         };
@@ -27,6 +28,7 @@ export interface Database {
           seats_available: number;
           total_seats: number;
           status?: 'available' | 'fully-booked' | 'cancelled';
+          event_owner_id?: string | null;
           created_at?: string;
           updated_at?: string;
         };
@@ -41,6 +43,7 @@ export interface Database {
           seats_available?: number;
           total_seats?: number;
           status?: 'available' | 'fully-booked' | 'cancelled';
+          event_owner_id?: string | null;
           created_at?: string;
           updated_at?: string;
         };
@@ -56,6 +59,7 @@ export interface Database {
           country_of_residence: string;
           city_town_name: string;
           is_admin: boolean;
+          is_provider: boolean;
           created_at: string;
           updated_at: string;
         };
@@ -69,6 +73,7 @@ export interface Database {
           country_of_residence: string;
           city_town_name: string;
           is_admin?: boolean;
+          is_provider?: boolean;
           created_at?: string;
           updated_at?: string;
         };
@@ -82,6 +87,7 @@ export interface Database {
           country_of_residence?: string;
           city_town_name?: string;
           is_admin?: boolean;
+          is_provider?: boolean;
           created_at?: string;
           updated_at?: string;
         };

@@ -3,6 +3,7 @@
     "title": "Expediciones Angostura",
     "subtitle": "Eventos Programados",
     "adminPanel": "Panel de Administración",
+    "providerPanel": "Panel de Proveedor",
     "login": "Iniciar Sesión",
     "register": "Registrarse",
     "logout": "Cerrar Sesión",
@@ -104,6 +105,17 @@
     "events": "eventos",
     "noEvents": "No se encontraron eventos",
     "noEventsFilter": "Ningún evento coincide con los criterios de filtro seleccionados"
+  },
+  "provider": {
+    "providerPanel": "Panel de Proveedor",
+    "eventManagement": "Gestión de Mis Eventos",
+    "myEvents": "Mis Eventos",
+    "availableEvents": "Eventos Disponibles",
+    "totalBookings": "Total de Reservas",
+    "addEvent": "Agregar Evento",
+    "noEvents": "No Hay Eventos Creados",
+    "noEventsDescription": "Aún no has creado ningún evento. Comienza creando tu primer evento.",
+    "createFirstEvent": "Crear Tu Primer Evento"
   },
   "eventModal": {
     "title": "Título",
