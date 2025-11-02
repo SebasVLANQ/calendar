@@ -27,7 +27,7 @@ const AdminPanel: React.FC<AdminPanelProps> = ({
   const [selectedEvent, setSelectedEvent] = useState<Event | null>(null);
   
   // Filter states
-  const [filterType, setFilterType] = useState<'all' | 'date' | 'month' | 'year'>('all');
+  const [filterType, setFilterType] = useState<'all' | 'month' | 'year'>('all');
   const [selectedDate, setSelectedDate] = useState('');
   const [selectedMonth, setSelectedMonth] = useState(new Date().getMonth());
   const [selectedYear, setSelectedYear] = useState(new Date().getFullYear());
@@ -84,11 +84,6 @@ const AdminPanel: React.FC<AdminPanelProps> = ({
       const eventDate = new Date(event.start_time);
       
       switch (filterType) {
-        case 'date':
-          if (!selectedDate) return true;
-          const filterDate = new Date(selectedDate);
-          return eventDate.toDateString() === filterDate.toDateString();
-        
         case 'month':
           return eventDate.getMonth() === selectedMonth && eventDate.getFullYear() === selectedYear;
         
@@ -239,27 +234,14 @@ const AdminPanel: React.FC<AdminPanelProps> = ({
                       <label className="block text-sm font-medium text-gray-700 mb-1">{t('admin.filterBy')}</label>
                       <select
                         value={filterType}
-                        onChange={(e) => setFilterType(e.target.value as any)}
+                        onChange={(e) => setFilterType(e.target.value as 'all' | 'month' | 'year')}
                         className="px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white"
                       >
                         <option value="all">{t('admin.allEvents')}</option>
-                        <option value="date">{t('admin.specificDate')}</option>
                         <option value="month">{t('admin.monthYear')}</option>
                         <option value="year">{t('admin.year')}</option>
                       </select>
                     </div>
-
-                    {filterType === 'date' && (
-                      <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-1">{t('admin.selectDate')}</label>
-                        <input
-                          type="date"
-                          value={selectedDate}
-                          onChange={(e) => setSelectedDate(e.target.value)}
-                          className="px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white"
-                        />
-                      </div>
-                    )}
 
                     {(filterType === 'month' || filterType === 'year') && (
                       <>
