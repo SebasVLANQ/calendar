@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { X, Users, Calendar, Plus, Eye, Edit3, Trash2 } from 'lucide-react';
+import { X, Users, Calendar, Plus, Eye, CreditCard as Edit3, Trash2 } from 'lucide-react';
 import { Event, UserProfile, EventRegistration } from '../types';
 import { supabase } from '../lib/supabase';
 import AddEventModal from './AddEventModal';
