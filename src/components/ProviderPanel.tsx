@@ -27,7 +27,7 @@ const ProviderPanel: React.FC<ProviderPanelProps> = ({
   const [selectedEvent, setSelectedEvent] = useState<Event | null>(null);
   
   // Filter events owned by the current provider
-  const providerEvents = events.filter(event => event.event_owner_id === currentUser.id);
+  const providerEvents = events.filter(event => event.provider_id === currentUser.id);
 
   useEffect(() => {
     loadRegistrations();
@@ -263,7 +263,7 @@ const ProviderPanel: React.FC<ProviderPanelProps> = ({
       {/* Add Event Modal */}
       {showAddEventModal && (
         <AddEventModal
-          eventOwnerId={currentUser.id}
+          providerId={currentUser.id}
           onClose={() => setShowAddEventModal(false)}
           onEventAdded={onEventsUpdate}
         />

@@ -9,7 +9,7 @@ export interface Event {
   seats_available: number;
   total_seats: number;
   status: 'available' | 'fully-booked' | 'cancelled';
-  event_owner_id?: string;
+  provider_id?: string;
   created_at?: string;
   updated_at?: string;
 }

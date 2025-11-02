@@ -3,12 +3,12 @@ import { X, Plus, Calendar, Clock, Users, Award } from 'lucide-react';
 import { supabase } from '../lib/supabase';
 
 interface AddEventModalProps {
-  eventOwnerId?: string;
+  providerId?: string;
   onClose: () => void;
   onEventAdded: () => void;
 }
 
-const AddEventModal: React.FC<AddEventModalProps> = ({ eventOwnerId, onClose, onEventAdded }) => {
+const AddEventModal: React.FC<AddEventModalProps> = ({ providerId, onClose, onEventAdded }) => {
   const [formData, setFormData] = useState({
     title: '',
     description: '',
@@ -98,7 +98,7 @@ const AddEventModal: React.FC<AddEventModalProps> = ({ eventOwnerId, onClose, on
           total_seats: formData.total_seats,
           seats_available: formData.total_seats,
           status: 'available',
-          event_owner_id: eventOwnerId || null
+          provider_id: providerId || null
         });
 
       if (error) throw error;
