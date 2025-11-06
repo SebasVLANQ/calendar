@@ -201,7 +201,7 @@ function App() {
             {/* Brand Icon - spans both rows on small screens */}
             <div className="row-span-2 flex items-center lg:row-span-1">
               <a 
-                href="https://expedicionesangostura.github.io/EA.home/" 
+                href="http://www.expedicionesangostura.com" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="transition-transform hover:scale-110"
