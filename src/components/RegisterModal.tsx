@@ -87,7 +87,7 @@ const RegisterModal: React.FC<RegisterModalProps> = ({
           cityTownName: formData.cityTownName
         });
         onClose();
-        alert('Account created successfully! You are now logged in.');
+        alert('Account created successfully! Please validate your mail and login.');
       } catch (error: any) {
         if (error.message.includes('duplicate key')) {
           setErrors({ username: 'Username already exists' });
