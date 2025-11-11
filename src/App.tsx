@@ -64,16 +64,28 @@ function App() {
   }, []);
 
   const loadEvents = async () => {
+    console.log('loadEvents: Starting to load events...');
     try {
+      console.log('loadEvents: Making Supabase query...');
       const { data, error } = await supabase
         .from('events')
         .select('*')
         .order('start_time', { ascending: true });
 
+      console.log('loadEvents: Supabase query completed', { data, error });
+      
       if (error) throw error;
+      console.log('loadEvents: Setting events data', data);
       setEvents(data || []);
+      console.log('loadEvents: Events loaded successfully, count:', data?.length || 0);
     } catch (error) {
-      console.error('Error loading events:', error);
+      console.error('loadEvents: Error loading events:', error);
+      console.error('loadEvents: Error details:', {
+        message: error.message,
+        name: error.name,
+        stack: error.stack,
+        cause: error.cause
+      });
     }
   };
 
