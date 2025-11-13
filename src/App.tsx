@@ -142,7 +142,30 @@ function App() {
       await loadEvents();
       await loadUserRegistrations(currentUser.id);
       setShowEventModal(false);
-      alert(`Successfully registered for ${seatsRequested} seat(s)!`);
+      
+      // Send confirmation email
+      try {
+        const { data: emailData, error: emailError } = await supabase.functions.invoke('send-confirmation-email', {
+          body: {
+            event: event,
+            user: {
+              email: currentUser.email,
+              full_name: currentUser.full_name
+            },
+            seats_requested: seatsRequested
+          }
+        });
+
+        if (emailError) {
+          console.error('Email sending error:', emailError);
+          alert(`Successfully registered for ${seatsRequested} seat(s)! However, there was an issue sending the confirmation email.`);
+        } else {
+          alert(`Successfully registered for ${seatsRequested} seat(s)! A confirmation email has been sent to ${currentUser.email}.`);
+        }
+      } catch (emailError) {
+        console.error('Failed to send confirmation email:', emailError);
+        alert(`Successfully registered for ${seatsRequested} seat(s)! However, the confirmation email could not be sent.`);
+      }
     } catch (error: any) {
       console.error('Error booking event:', error);
       if (error.code === '23505') {

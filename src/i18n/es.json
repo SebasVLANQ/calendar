@@ -55,6 +55,8 @@
     "loginToRegister": "Por favor inicia sesión o regístrate para reservar asientos para este evento",
     "seatsRequested": "Número de asientos (máx 4)",
     "registerForEvent": "Registrarse para este evento",
+    "confirmationEmailSent": "Se ha enviado un correo de confirmación a tu dirección de correo electrónico",
+    "confirmationEmailFailed": "Registro exitoso, pero no se pudo enviar el correo de confirmación",
     "difficulties": {
       "beginner": "Principiante",
       "intermediate": "Intermedio",

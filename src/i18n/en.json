@@ -55,6 +55,8 @@
     "loginToRegister": "Please log in or register to book seats for this event",
     "seatsRequested": "Number of seats (max 4)",
     "registerForEvent": "Register for this event",
+    "confirmationEmailSent": "A confirmation email has been sent to your email address",
+    "confirmationEmailFailed": "Registration successful, but confirmation email could not be sent",
     "difficulties": {
       "beginner": "Beginner",
       "intermediate": "Intermediate",
