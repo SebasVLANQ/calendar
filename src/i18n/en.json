@@ -48,6 +48,8 @@
     "seatsAvailable": "Seats Available",
     "difficulty": "Difficulty",
     "status": "Status",
+    "startLocation": "Event Start Location",
+    "locationUrl": "Location URL",
     "registerNow": "Register Now",
     "alreadyRegistered": "You are registered for this event",
     "loginToRegister": "Please log in or register to book seats for this event",

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { X, Plus, Calendar, Clock, Users, Award } from 'lucide-react';
+import { X, Plus, Calendar, Clock, Users, Award, MapPin } from 'lucide-react';
 import { supabase } from '../lib/supabase';
+import { useTranslation } from '../i18n/i18n';
 
 interface AddEventModalProps {
   providerId?: string;
@@ -9,13 +10,15 @@ interface AddEventModalProps {
 }
 
 const AddEventModal: React.FC<AddEventModalProps> = ({ providerId, onClose, onEventAdded }) => {
+  const { t } = useTranslation();
   const [formData, setFormData] = useState({
     title: '',
     description: '',
     start_time: '',
     end_time: '',
     difficulty: 'Beginner' as 'Beginner' | 'Intermediate' | 'Advanced',
-    total_seats: 10
+    total_seats: 10,
+    event_start_location: ''
   });
 
   const [errors, setErrors] = useState<Record<string, string>>({});
@@ -98,7 +101,8 @@ const AddEventModal: React.FC<AddEventModalProps> = ({ providerId, onClose, onEv
           total_seats: formData.total_seats,
           seats_available: formData.total_seats,
           status: 'available',
-          provider_id: providerId || null
+          provider_id: providerId || null,
+          event_start_location: formData.event_start_location.trim() || null
         });
 
       if (error) throw error;
@@ -183,6 +187,21 @@ const AddEventModal: React.FC<AddEventModalProps> = ({ providerId, onClose, onEv
                   placeholder="Describe the event, what participants can expect, requirements, etc."
                 />
                 {errors.description && <p className="text-red-500 text-xs mt-1">{errors.description}</p>}
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2 flex items-center space-x-2">
+                  <img src="/google_map_icon.png" alt="Location" className="h-4 w-4" />
+                  <span>{t('events.startLocation')}</span>
+                </label>
+                <input
+                  type="url"
+                  value={formData.event_start_location}
+                  onChange={(e) => handleChange('event_start_location', e.target.value)}
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  placeholder="https://maps.google.com/..."
+                />
+                <p className="text-xs text-gray-500 mt-1">Optional: Add a Google Maps link for the event location</p>
               </div>
             </div>
 

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { X, Clock, Users, Award, Calendar, CreditCard as Edit3 } from 'lucide-react';
+import { X, Clock, Users, Award, Calendar, CreditCard as Edit3, MapPin } from 'lucide-react';
 import { Event, UserProfile, EventRegistration } from '../types';
 import { useTranslation } from '../i18n/i18n';
 
@@ -122,6 +122,20 @@ const EventModal: React.FC<EventModalProps> = ({
                   onChange={(e) => setEditedEvent({ ...editedEvent, description: e.target.value })}
                   rows={3}
                   className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                />
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2 flex items-center space-x-2">
+                  <img src="/google_map_icon.png" alt="Location" className="h-4 w-4" />
+                  <span>{t('events.startLocation')}</span>
+                </label>
+                <input
+                  type="url"
+                  value={editedEvent.event_start_location || ''}
+                  onChange={(e) => setEditedEvent({ ...editedEvent, event_start_location: e.target.value })}
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  placeholder="https://maps.google.com/..."
                 />
               </div>
 
@@ -248,6 +262,19 @@ const EventModal: React.FC<EventModalProps> = ({
                   </div>
                 </div>
               </div>
+
+              {/* Event Location */}
+              {event.event_start_location && (
+                <div className="flex items-center space-x-3">
+                  <img src="/google_map_icon.png" alt="Location" className="h-5 w-5" />
+                  <div>
+                    <p className="text-sm text-gray-500">{t('events.startLocation')}</p>
+                    <p className="font-medium text-gray-500 select-text cursor-text break-all">
+                      {event.event_start_location}
+                    </p>
+                  </div>
+                </div>
+              )}
 
               {/* Status */}
               <div className="flex items-center space-x-2">

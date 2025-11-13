@@ -14,6 +14,7 @@ export interface Database {
           total_seats: number;
           status: 'available' | 'fully-booked' | 'cancelled';
           provider_id: string | null;
+          event_start_location: string | null;
           created_at: string;
           updated_at: string;
         };
@@ -29,6 +30,7 @@ export interface Database {
           total_seats: number;
           status?: 'available' | 'fully-booked' | 'cancelled';
           provider_id?: string | null;
+          event_start_location?: string | null;
           created_at?: string;
           updated_at?: string;
         };
@@ -44,6 +46,7 @@ export interface Database {
           total_seats?: number;
           status?: 'available' | 'fully-booked' | 'cancelled';
           provider_id?: string | null;
+          event_start_location?: string | null;
           created_at?: string;
           updated_at?: string;
         };

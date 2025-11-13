@@ -10,6 +10,7 @@ export interface Event {
   total_seats: number;
   status: 'available' | 'fully-booked' | 'cancelled';
   provider_id?: string;
+  event_start_location?: string | null;
   created_at?: string;
   updated_at?: string;
 }
