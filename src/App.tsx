@@ -211,8 +211,25 @@ function App() {
   const handleLogout = async () => {
     try {
       await signOut();
-    } catch (error) {
+    } catch (error: any) {
       console.error('Error signing out:', error);
+      
+      // Check if it's an AuthSessionMissingError or similar session-related error
+      if (error?.message?.includes('Auth session missing') || 
+          error?.name === 'AuthSessionMissingError' ||
+          error?.message?.includes('session')) {
+        
+        // Force client-side logout by clearing state
+        setCurrentUser(null);
+        setUserRegistrations([]);
+        
+        // Inform user they need to log back in
+        alert('Your session has expired or is invalid. Please log in again to continue using the application.');
+        return;
+      }
+      
+      // For other errors, show generic error message
+      alert('Error signing out. Please try again.');
     }
   };
 
